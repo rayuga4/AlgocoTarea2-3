@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include <chrono>
+#include <cmath>
 using namespace std;
 
 int readFile(string filename, int column, int row = 0){
@@ -72,7 +73,7 @@ int evaluar(string s1, string s2){
     int sub = evaluar(aux,s2) + costo_sub(s1[0],s2[0]);
     int ins = evaluar(s2[0]+s1,s2) + costo_del(s2[0]);
     int del = evaluar(s1.substr(1),s2) + costo_del(s1[0]);
-    int trans = (10^31)-1;
+    int trans = pow(2,31)-1;
     if (s1.length()>=2 and s2.length()>=2){
         if (s1[0]==s2[1] or s1[1]==s2[0]){
             aux = s1;
