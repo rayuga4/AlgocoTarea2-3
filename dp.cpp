@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <algorithm>
+#include <chrono>
 using namespace std;
 
 int readFile(string filename, int column, int row = 0){
@@ -67,7 +68,16 @@ int evaluar(string s1, string s2){
 
 int main(){
     string s1,s2;
-    cin>>s1;
-    cin>>s2;
-    cout<<evaluar(s1,s2)<<endl;
+    string filename = "set 9.txt";
+    ifstream file(filename);
+    getline(file,s1);
+    s1.erase(s1.length()-1); // remueve el \n
+    getline(file,s2);
+    file.close();
+    auto start = chrono::system_clock::now();
+    int cost = evaluar(s1,s2);
+    auto end = chrono::system_clock::now();
+    auto timeTaken = end-start;
+    cout<<cost<<endl;
+    cout<<timeTaken.count()<<endl;
 }
