@@ -41,6 +41,7 @@ int costo_trans(char a, char b){
     return readFile(filename,x,y);
 }
 
+// Idea sacada de Wagner-Fischer Algorithm: https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm
 int evaluar(string s1, string s2){
     int n = s1.length();
     int m = s2.length();
